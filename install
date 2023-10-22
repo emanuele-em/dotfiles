@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+current_dir=$(dirname "$0")
+for folder in $(echo "$current_dir/*/")
+do
+    folder_name=$(basename "$folder")
+    if stow -n -d "$current_dir" -t "$HOME" "$folder_name" 2>&1 | grep -q "not existing"; then
+        echo "Stow for $folder_name does not exist in $HOME, skipping removal."
+    else
+        echo "Removing existing stow for $folder_name in $HOME."
+        stow -D -d "$current_dir" -t "$HOME" "$folder_name"
+    fi
+
+    echo "Stowing $folder_name to $HOME."
+    stow -d "$current_dir" -t "$HOME" "$folder_name"
+done

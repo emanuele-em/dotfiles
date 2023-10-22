@@ -1,0 +1,30 @@
+font:
+    normal:
+      family: FiraCode Nerd Font Mono
+      style: Regular
+    bold:
+      style: Bold
+    italic:
+      style: Italic
+    offset:
+        y: 6
+    size: 11
+window:
+  padding:
+    x: 0
+    y: 7
+  decorations: "Buttonless"
+import:
+  - ~/.config/alacritty/themes/themes/gruvbox_dark.yaml
+colors:
+  cursor:
+      text: "#111111"
+      cursor: "#ffffff"
+  vi_mode_cursor:
+      text: "#111111"
+      cursor: "#ffffff"
+key_bindings:
+  - {key: PageUp, action: ScrollLineUp}
+  - {key: PageDown, action: ScrollLineDown}
+  - {key: Home, action: ScrollToTop}
+  - {key: End, action: ScrollToBottom}
