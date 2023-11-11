@@ -1,39 +1,28 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.local/share/nvim/plugged')
 Plug 'ryanoasis/vim-devicons'
--- Plug 'glepnir/dashboard-nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
--- Plug 'tpope/vim-fugitive'
--- Plug 'altercation/vim-colors-solarized'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'phaazon/hop.nvim'
--- Plug 'scrooloose/syntastic'
 Plug 'nvim-lua/plenary.nvim'
 Plug('williamboman/mason.nvim', { ['do'] = vim.fn[':MasonUpdate'] })
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn[':TSUpdate']})
 Plug('nvim-telescope/telescope.nvim', { ['tag']= '0.1.x' })
 Plug 'folke/trouble.nvim'
 Plug 'ThePrimeagen/harpoon'
--- Plug 'm-demare/hlargs.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'neovim/nvim-lspconfig'
--- Plug 'onsails/lspkind.nvim'
--- Plug 'nvim-lualine/lualine.nvim'
 Plug 'rrethy/vim-illuminate'
--- Plug 'lukas-reineke/indent-blankline.nvim'
--- Plug "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 Plug 'windwp/nvim-autopairs'
 Plug('j-hui/fidget.nvim', { ['tag']= 'legacy' })
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'lervag/vimtex'
--- LSP completion source:
 Plug 'hrsh7th/cmp-nvim-lsp'
--- Useful completion sources:
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-vsnip'
@@ -78,13 +67,6 @@ vim.g.loaded_netrwPlugin = 1
 -- gruvobx
 require('gruvbox').setup({
     contrast_dark = 'soft',
-    -- overrides = {
-    --     DiagnosticVirtualTextOk = { fg = '#768042', bg = '#424a3e' },
-    --     DiagnosticVirtualTextWarn = { fg = '#b39a76', bg = '#574833' },
-    --     DiagnosticVirtualTextHint = { fg = '#768042', bg = '#424a3e' },
-    --     DiagnosticVirtualTextInfo = { bg = '#32302f' },
-    --     DiagnosticVirtualTextError = { fg = '#8f6360', bg = '#472322' },
-    -- }
 })
 
 -- colorizer
@@ -142,54 +124,6 @@ require('trouble').setup({
     icons = false,
 })
 
--- Dashboard
--- require('dashboard').setup({
--- theme = 'hyper',
---     config = {
---       packages = {
--- 	      enable = false
---       },
---       week_header = {
---        enable = true,
---       },
---       shortcut = {
---         { 
---             desc = '󰊳 Update',
---             group = '@property',
---             action = function()
---                 vim.cmd('PlugClean')
---                 vim.cmd('PlugInstall')
---             end,
---             key = 'u' 
---         },
---         {
---           desc = ' Files',
---           group = 'Label',
---           action = 'Telescope find_files cwd=~',
---           key = 'f',
---         },
---         {
---           desc = ' init.lua',
---           group = 'DiagnosticHint',
---           action = 'e $MYVIMRC',
---           key = 'e',
---         },
---         {
---             -- github folder description with github icon
---           desc = ' Github dir',
---           group = 'Number',
---           action = 'Telescope find_files cwd=~/Documents/GitHub/',
---           key = 'g',
---         }
---       },
---       project = {
---           enable = true,
---           icon = ' ',
---           label = 'Most Recent Projects',
---           action = 'Telescope find_files cwd='
---       },
---     },
--- })
 
 -- Setup language servers.
 require("mason").setup({
@@ -257,37 +191,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 -- lsp status with fidget
 require("fidget").setup{}
--- LSP Diagnostics Options Setup 
--- local sign = function(opts)
---   vim.fn.sign_define(opts.name, {
---     texthl = opts.name,
---     text = opts.text,
---     numhl = ''
---   })
--- end
---
--- sign({name = 'DiagnosticSignError', text = ''})
--- sign({name = 'DiagnosticSignWarn', text = ''})
--- sign({name = 'DiagnosticSignHint', text = ''})
--- sign({name = 'DiagnosticSignInfo', text = ''})
---
--- vim.diagnostic.config{
---     virtual_text = false,
---     signs = true,
---     update_in_insert = true,
---     underline = true,
---     severity_sort = false,
---     float = {
---         border = 'rounded',
---         source = 'always',
---         header = '',
---         prefix = '',
---     },
--- }
-
--- lsp line
--- require("lsp_lines").setup()
-
 
 require("copilot_cmp").setup()
 -- Completion Plugin Setup && lspkind.lua
@@ -341,21 +244,11 @@ cmp.setup({
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
   },
-  -- formatting = {
-  --   format = lspkind.cmp_format({
-  --     mode = 'symbol_text', -- show only symbol annotations
-  --     maxwidth = 100, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-  --     symbol_map = { Copilot = "" },
-  --   })
-  -- },
   sorting = {
     priority_weight = 2,
     comparators = {
       require("copilot_cmp.comparators").prioritize,
-
-      -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,
-      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
       cmp.config.compare.exact,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
@@ -473,83 +366,6 @@ require'nvim-treesitter.configs'.setup {
 -- commenter
 require('Comment').setup()
 
--- hlargs (highlights arguments using treesitter)
--- require('hlargs').setup()
-
--- nvimtree
--- local function my_on_attach(bufnr)
---   local api = require('nvim-tree.api')
---   local function opts(desc)
---     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
---   end
---   ---
---   -- OR use all default mappings
---   api.config.mappings.default_on_attach(bufnr)
---   vim.keymap.set('n', 'cd', api.tree.change_root_to_node,          opts('CD'))
---
--- end
---
--- require("nvim-tree").setup({
---   reload_on_bufenter = true,
---   hijack_directories = {
---       enable = true,
---   },
---   view = {
---     width = 30,
---   },
---   renderer = {
---     group_empty = false,
---     icons = {
---       git_placement = 'signcolumn',
---       glyphs = {
---         default = '',
---         symlink = '',
---         bookmark = "",
---         modified = "",
---         folder = {
---               arrow_closed = "",
---               arrow_open = "",
---               default = "",
---               open = "",
---               empty = "",
---               empty_open = "",
---               symlink = "",
---               symlink_open = "",
---         },
---         git = {
---           unstaged = "",
---           staged = "",
---           unmerged = "",
---           renamed = "",
---           untracked = "",
---           deleted = "",
---           ignored = "◌"
---         },
---       },
---     }
---   },
---   filters = {
---     dotfiles = true,
---   },
---   on_attach = my_on_attach,
---   update_focused_file = {
---     enable = true,
---   },
--- })
-
--- require('lualine').setup {
---   options = {
---       theme = 'gruvbox',
---       globalstatus = true,
---   },
---   sections = {
---       lualine_c = { {
---         'filename',
---         path = 2,
---     } },
---   },
---   ...
--- }
 
 -- hop / easymotion
 local hop = require('hop')
@@ -558,28 +374,6 @@ hop.setup()
 -- indent indent-blankline
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
-
--- require("ibl").setup{
---     indent= {
---         char = "▏",
---     },
---     scope = {
---         char = "▌",
---         enabled = true,
---         show_start = false,
---         show_end = false,
---     },
---     exclude = {
---         filetypes = { "help", "packer", "nvimtree", "dashboard", "neotree", "neo-tree" },
---         buftypes = { "terminal", "nofile", "quickfix" },
---     }
---     -- char = "▏",
---     -- space_char_blankline = " ",
---     -- show_current_context = true,
---     -- show_current_context_start = false,
---     -- filetype_exclude = { 'help', 'packer', 'nvimtree', 'dashboard', 'neo-tree' },
---     -- buftype_exclude = { 'terminal', 'nofile', 'quickfix' },
--- }
 
 -- map
 vim.g.mapleader = " "
@@ -597,7 +391,7 @@ vim.keymap.set('n', '<Leader>bb', ':enew<cr>')
 vim.keymap.set('n', '<Leader>bn', ':bnext<cr>')
 vim.keymap.set('n', '<Leader>bp', ':bprev<cr>')
 vim.keymap.set('n', '<Leader>bd', ':bdelete<cr>')
-vim.keymap.set("n", "<leader>mm", mark.toggle_file)
+vim.keymap.set("n", "<leader>mm", mark.add_file)
 vim.keymap.set("n", "<leader>ml", ui.toggle_quick_menu)
 vim.keymap.set("n", "<leader>mp", function() ui.nav_prev() end)
 vim.keymap.set("n", "<leader>mn", function() ui.nav_next() end)
