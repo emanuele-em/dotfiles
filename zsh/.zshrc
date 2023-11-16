@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 #keyBindings
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "sh .config/alacritty/scripts/tmux-sessionizer.sh\n"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
