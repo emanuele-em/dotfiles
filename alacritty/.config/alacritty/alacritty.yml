@@ -14,6 +14,7 @@ font:
       y: 3
     size: 12
 window:
+  startup_mode: "Fullscreen"
   padding:
     x: 0
     y: 0
