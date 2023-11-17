@@ -366,7 +366,6 @@ require'nvim-treesitter.configs'.setup {
 -- commenter
 require('Comment').setup()
 
-
 -- hop / easymotion
 local hop = require('hop')
 hop.setup()
