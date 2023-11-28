@@ -1,33 +1,37 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.local/share/nvim/plugged')
-Plug 'ryanoasis/vim-devicons'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-Plug 'ellisonleao/gruvbox.nvim'
-Plug 'phaazon/hop.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug('williamboman/mason.nvim', { ['do'] = vim.fn[':MasonUpdate'] })
+-- themes
+Plug 'ryanoasis/vim-devicons' -- icons
+Plug 'nvim-tree/nvim-web-devicons' -- file icons
+Plug 'ellisonleao/gruvbox.nvim' -- color scheme
+
+-- others
+Plug 'airblade/vim-gitgutter' -- show git diff in sign column
+Plug 'tpope/vim-surround' -- surround text with brackets
+Plug 'phaazon/hop.nvim' -- jump to word in the buffer
+Plug 'nvim-lua/plenary.nvim' -- required for telescope
+Plug('williamboman/mason.nvim', { ['do'] = vim.fn[':MasonUpdate'] }) -- to install language servers
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn[':TSUpdate']})
 Plug('nvim-telescope/telescope.nvim', { ['tag']= '0.1.x' })
-Plug 'folke/trouble.nvim'
-Plug 'ThePrimeagen/harpoon'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'numToStr/Comment.nvim'
-Plug 'simrat39/rust-tools.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'rrethy/vim-illuminate'
-Plug 'windwp/nvim-autopairs'
-Plug('j-hui/fidget.nvim', { ['tag']= 'legacy' })
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'lervag/vimtex'
+Plug 'ThePrimeagen/harpoon' -- to save and jump to bookmarks
+Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
+Plug 'rrethy/vim-illuminate' -- highlight all instances of word under cursor
+Plug 'windwp/nvim-autopairs' -- autopairs
+Plug 'norcalli/nvim-colorizer.lua' -- colorize hex code like #ff0000
+Plug 'lervag/vimtex' -- compile latex
+Plug 'neovim/nvim-lspconfig' -- language server
+Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
+Plug('j-hui/fidget.nvim', { ['tag']= 'legacy' })  -- lsp bottom right status
+Plug 'folke/trouble.nvim' -- lsp trouble
+Plug 'simrat39/rust-tools.nvim' -- rust tools
+Plug 'folke/zen-mode.nvim'
+-- lsp
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/cmp-path'                              
-Plug 'hrsh7th/cmp-buffer'                            
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip' 
 Plug 'zbirenbaum/copilot.lua'
 Plug 'hrsh7th/cmp-cmdline'
@@ -83,13 +87,7 @@ vim.opt.completeopt = {'menuone', 'noselect', 'noinsert'}
 vim.opt.shortmess = vim.opt.shortmess + { c = true}
 vim.api.nvim_set_option('updatetime', 50) 
 
--- Fixed column for diagnostics to appear
--- Show autodiagnostic popup on cursor hover_range
--- Goto previous / next diagnostic warning / error 
--- Show inlay_hints more frequently 
 vim.cmd([[
-" set signcolumn=yes
-" autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 autocmd FileType * set formatoptions-=cro
 colorscheme gruvbox
 highlight illuminatedWordText guibg=#504945
@@ -108,7 +106,9 @@ require('copilot').setup({
 --auto pairs
 require("nvim-autopairs").setup({
     enable_check_bracket_line = true, --Don't add pairs if it already has a close pair in the same line
+    check_ts = true,
     ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+    disable_filetype = { "TelescopePrompt" , "tex", "latex" },
 })
 
 -- telescope
