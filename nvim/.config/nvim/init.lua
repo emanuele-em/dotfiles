@@ -118,6 +118,9 @@ local builtin = require('telescope.builtin')
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
+--zen mode
+require('zen-mode').setup{}
+
 
 -- trouble
 require('trouble').setup({
