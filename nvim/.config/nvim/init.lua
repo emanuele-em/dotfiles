@@ -6,25 +6,8 @@ Plug 'nvim-tree/nvim-web-devicons' -- file icons
 Plug 'ellisonleao/gruvbox.nvim' -- color scheme
 
 -- others
-Plug 'airblade/vim-gitgutter' -- show git diff in sign column
-Plug 'tpope/vim-surround' -- surround text with brackets
-Plug 'phaazon/hop.nvim' -- jump to word in the buffer
 Plug 'nvim-lua/plenary.nvim' -- required for telescope
-Plug('williamboman/mason.nvim', { ['do'] = vim.fn[':MasonUpdate'] }) -- to install language servers
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn[':TSUpdate']})
-Plug('nvim-telescope/telescope.nvim', { ['tag']= '0.1.x' })
-Plug 'ThePrimeagen/harpoon' -- to save and jump to bookmarks
-Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
-Plug 'rrethy/vim-illuminate' -- highlight all instances of word under cursor
-Plug 'windwp/nvim-autopairs' -- autopairs
-Plug 'norcalli/nvim-colorizer.lua' -- colorize hex code like #ff0000
-Plug 'lervag/vimtex' -- compile latex
-Plug 'neovim/nvim-lspconfig' -- language server
-Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
-Plug('j-hui/fidget.nvim', { ['tag']= 'legacy' })  -- lsp bottom right status
-Plug 'folke/trouble.nvim' -- lsp trouble
-Plug 'simrat39/rust-tools.nvim' -- rust tools
-Plug 'folke/zen-mode.nvim'
 -- lsp
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
@@ -37,6 +20,24 @@ Plug 'zbirenbaum/copilot.lua'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp' 
 Plug 'zbirenbaum/copilot-cmp'
+
+Plug('nvim-telescope/telescope.nvim', { ['tag']= '0.1.x' })
+Plug 'airblade/vim-gitgutter' -- show git diff in sign column
+Plug 'tpope/vim-surround' -- surround text with brackets
+Plug('williamboman/mason.nvim', { ['do'] = vim.fn[':MasonUpdate'] }) -- to install language servers
+Plug 'ThePrimeagen/harpoon' -- to save and jump to bookmarks
+Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
+Plug 'rrethy/vim-illuminate' -- highlight all instances of word under cursor
+Plug 'windwp/nvim-autopairs' -- autopairs
+Plug 'norcalli/nvim-colorizer.lua' -- colorize hex code like #ff0000
+Plug 'lervag/vimtex' -- compile latex
+Plug 'neovim/nvim-lspconfig' -- language server
+Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
+Plug('j-hui/fidget.nvim', { ['tag']= 'legacy' })  -- lsp bottom right status
+Plug 'folke/trouble.nvim' -- lsp trouble
+Plug 'simrat39/rust-tools.nvim' -- rust tools
+Plug 'folke/zen-mode.nvim'
+Plug 'phaazon/hop.nvim' -- jump to word in the buffer
 vim.call('plug#end')
 
 -- Basic behavior

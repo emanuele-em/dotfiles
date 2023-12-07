@@ -106,6 +106,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+# nvm
+source ~/.nvm/nvm.sh
 
 #keyBindings
 bindkey -s ^f "sh .config/alacritty/scripts/tmux-sessionizer.sh\n"
