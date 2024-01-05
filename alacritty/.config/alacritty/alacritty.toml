@@ -11,6 +11,6 @@ padding = {x = 0, y = 0}
 decorations = "Full"
 
 [colors]
-cursor = { text = "#ffffff", cursor = "#111111" }
-vi_mode_cursor = { text = "#ffffff", cursor = "#111111" }
+cursor = { text = "#111111", cursor = "#ffffff" }
+vi_mode_cursor = { text = "#111111", cursor = "#ffffff" }
 
