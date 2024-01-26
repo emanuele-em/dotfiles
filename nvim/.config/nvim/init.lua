@@ -15,6 +15,11 @@ Plug ('williamboman/mason.nvim', { ['do'] = ':MasonUpdate'}) -- to install langu
 Plug 'zbirenbaum/copilot.lua'
 -- Plug 'simrat39/rust-tools.nvim' -- rust tools
 
+------------------------------------------------------------------------------------------ debugger
+Plug 'mfussenegger/nvim-dap'
+Plug "jay-babu/mason-nvim-dap.nvim"
+Plug 'rcarriga/nvim-dap-ui'
+
 ------------------------------------------------------------------------------------------ Autocompletion
 Plug 'hrsh7th/nvim-cmp' 
 Plug 'hrsh7th/cmp-buffer'
@@ -66,7 +71,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.showmatch = true
-vim.opt.tabstop=4
+vim.opt.tabstop =4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
@@ -128,7 +133,7 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l')
 ------------------------------------------------------------------------------------------ Language Features
 -- treesitter
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "rust", "python", "cpp", "javascript", "latex", "typescript"},
+  ensure_installed = { "c", "lua", "rust", "python", "cpp", "javascript", "latex", "typescript", "markdown_inline"},
   sync_install = false,
   auto_install = true,
   highlight = {
@@ -160,9 +165,11 @@ lsp_zero.on_attach(function(client, bufnr)
     end, opts)
 end)
 
-require('mason').setup({})
+require('mason').setup({
+    ensure_installed = {'clangd', 'clang-format', 'codelldb'},
+})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer'},
+  ensure_installed = {'tsserver', 'rust_analyzer', 'clangd'},
   handlers = {
     lsp_zero.default_setup,
   },
@@ -174,6 +181,50 @@ lsp_zero.set_sign_icons({
   hint = '⚑',
   info = '»'
 })
+
+------------------------------------------------------------------------------------------ Debugger
+
+require("mason-nvim-dap").setup({
+    automatic_setup = true,
+    ensure_installed = {'codelldb'},
+    handlers = {},
+})
+-- local dap = require("dap")
+local dapui =  require("dapui").setup()
+-- dap.adapters.lldb = {
+--   type = 'executable',
+--   command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb', -- adjust as needed, must be absolute path
+--   name = 'lldb'
+-- }
+-- dap.listeners.before.attach.dapui_config = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.launch.dapui_config = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.event_terminated.dapui_config = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited.dapui_config = function()
+--   dapui.close()
+-- end
+
+-- dap.configurations.cpp = {
+--   {
+--     name = 'Launch',
+--     type = 'codelldb',
+--     request = 'launch',
+--     program = function()
+--       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--     end,
+--     cwd = '${workspaceFolder}',
+--     stopOnEntry = false,
+--     args = {},
+--   },
+-- }
+
+-- dap.configurations.c = dap.configurations.cpp
+-- dap.configurations.rust = dap.configurations.cpp
 
 ------------------------------------------------------------------------------------------ Autocompletion
 -- Plug 'hrsh7th/nvim-cmp' 
@@ -239,9 +290,30 @@ vim.diagnostic.config({
 local luasnip = require("luasnip")
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.filetype_extend("vue", {"vue"})
-vim.keymap.set({"i"}, "<Tab>", function() luasnip.expand() end, {silent = true})
-vim.keymap.set({"i", "s"}, "<Tab>", function() luasnip.jump( 1) end, {silent = true})
-vim.keymap.set({"i", "s"}, "<S-Tab>", function() luasnip.jump(-1) end, {silent = true})
+vim.keymap.set({"i"}, "<Tab>", function() 
+    if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+    else
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n")
+    end
+end, {silent = true})
+vim.keymap.set({"i", "s"}, "<Tab>", function() 
+    if luasnip.jumpable(1) then
+        luasnip.jump(1)
+    else
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n")
+    end
+end, {silent = true})
+vim.keymap.set({"i", "s"}, "<S-Tab>", function() 
+    if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    else
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n")
+    end
+end, {silent = true})
+
+-- vim.keymap.set({"i", "s"}, "<Tab>", function() luasnip.jump( 1) end, {silent = true})
+-- vim.keymap.set({"i", "s"}, "<S-Tab>", function() luasnip.jump(-1) end, {silent = true})
 
 vim.keymap.set({"i", "s"}, "<C-e>", function()
 	if luasnip.choice_active() then
