@@ -110,7 +110,11 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.nvm/nvm.sh
 
 #keyBindings
-bindkey -s ^f "sh .config/alacritty/scripts/tmux-sessionizer.sh\n"
+bindkey -s ^f "sh ~/.config/alacritty/scripts/tmux-sessionizer.sh\n"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# To customize prompt, run `p10k configure` or edit ~/Documents/GitHub/dotfiles/p10k/.p10k.zsh.
+[[ ! -f ~/Documents/GitHub/dotfiles/p10k/.p10k.zsh ]] || source ~/Documents/GitHub/dotfiles/p10k/.p10k.zsh

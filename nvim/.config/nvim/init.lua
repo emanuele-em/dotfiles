@@ -2,25 +2,32 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.local/share/nvim/plugged')
 
 ------------------------------------------------------------------------------------------ Foundational
+if not vim.g.vscode then
 Plug 'nvim-lua/plenary.nvim'
+end
 
 ------------------------------------------------------------------------------------------ Language Features
+if not vim.g.vscode then
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate'})
+end
 
 ------------------------------------------------------------------------------------------ LSP
+if not vim.g.vscode then
 Plug ('VonHeikemen/lsp-zero.nvim', {branch = 'v3.x'})
 Plug 'neovim/nvim-lspconfig' -- language server
 Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
 Plug ('williamboman/mason.nvim', { ['do'] = ':MasonUpdate'}) -- to install language servers
 Plug 'zbirenbaum/copilot.lua'
+Plug ('CopilotC-Nvim/CopilotChat.nvim', { branch = 'canary' })
+end
+
 -- Plug 'simrat39/rust-tools.nvim' -- rust tools
 
 ------------------------------------------------------------------------------------------ debugger
-Plug 'mfussenegger/nvim-dap'
-Plug "jay-babu/mason-nvim-dap.nvim"
-Plug 'rcarriga/nvim-dap-ui'
 
 ------------------------------------------------------------------------------------------ Autocompletion
+
+if not vim.g.vscode then
 Plug 'hrsh7th/nvim-cmp' 
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -29,40 +36,60 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'zbirenbaum/copilot-cmp'
+end
 
+------------------------------------------------------------------------------------------ Formatter
+
+Plug ('prettier/vim-prettier', { ['do'] = 'yarn install --frozen-lockfile --production' })
 ------------------------------------------------------------------------------------------ Snippets
+if not vim.g.vscode then
 Plug ('L3MON4D3/LuaSnip', {tag = 'v2.*', ['do'] = 'make install_jsregexp'})
 Plug 'rafamadriz/friendly-snippets'
+end
 
 ------------------------------------------------------------------------------------------ LSP trouble
+if not vim.g.vscode then
 Plug 'folke/trouble.nvim' -- lsp trouble
+end
 
 ------------------------------------------------------------------------------------------ Misc and additional
+if not vim.g.vscode then
 Plug 'ThePrimeagen/harpoon' -- to save and jump to bookmarks
-Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
 Plug 'rrethy/vim-illuminate' -- highlight all instances of word under cursor
 Plug 'windwp/nvim-autopairs' -- autopairs
 Plug 'norcalli/nvim-colorizer.lua' -- colorize hex code like #ff0000
 Plug 'hrsh7th/cmp-cmdline'
+end
+Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
 
 ------------------------------------------------------------------------------------------ themes
+if not vim.g.vscode then
 Plug 'ryanoasis/vim-devicons' -- icons
 Plug 'ellisonleao/gruvbox.nvim' -- color scheme
 Plug ('j-hui/fidget.nvim', { tag = 'legacy' })  -- lsp bottom right status
+end
 
 ------------------------------------------------------------------------------------------ Navigation
+if not vim.g.vscode then
 Plug('nvim-telescope/telescope.nvim', {tag = '0.1.x' })
 Plug 'airblade/vim-gitgutter' -- show git diff in sign column
 Plug 'tpope/vim-surround' -- surround text with brackets
+end
 
 ------------------------------------------------------------------------------------------Latex
+if not vim.g.vscode then
 Plug 'lervag/vimtex' -- compile latex
+end
 
 ------------------------------------------------------------------------------------------ Productivity
+if not vim.g.vscode then
 Plug 'folke/zen-mode.nvim'
+end
 
 ------------------------------------------------------------------------------------------ Movements
+if not vim.g.vscode then
 Plug 'phaazon/hop.nvim' -- jump to word in the buffer
+end
 
 vim.call('plug#end')
 
@@ -116,19 +143,8 @@ vim.keymap.set('n', '<Leader>bb', ':enew<cr>')
 vim.keymap.set('n', '<Leader>bn', ':bnext<cr>')
 vim.keymap.set('n', '<Leader>bp', ':bprev<cr>')
 vim.keymap.set('n', '<Leader>bd', ':bdelete<cr>')
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
 vim.keymap.set('', '<Leader>y', '"+y')
 vim.keymap.set('', '<Leader>p', '"+p')
-vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h')
-vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j')
-vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k')
-vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l')
-
------------------------------------------------------------------------------------------- Foundational
--- Plug 'nvim-lua/plenary.nvim'
 
 ------------------------------------------------------------------------------------------ Language Features
 -- treesitter
@@ -160,13 +176,13 @@ lsp_zero.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
+    -- vim.keymap.set('n', '<space>fo', function()
+    --   vim.lsp.buf.format({ async = true })
+    -- end, opts)
 end)
 
 require('mason').setup({
-    ensure_installed = {'clangd', 'clang-format', 'codelldb'},
+    ensure_installed = {'clangd', 'clang-format', 'codelldb', 'prettierd'},
 })
 require('mason-lspconfig').setup({
   ensure_installed = {'tsserver', 'rust_analyzer', 'clangd'},
@@ -183,48 +199,6 @@ lsp_zero.set_sign_icons({
 })
 
 ------------------------------------------------------------------------------------------ Debugger
-
-require("mason-nvim-dap").setup({
-    automatic_setup = true,
-    ensure_installed = {'codelldb'},
-    handlers = {},
-})
--- local dap = require("dap")
-local dapui =  require("dapui").setup()
--- dap.adapters.lldb = {
---   type = 'executable',
---   command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb', -- adjust as needed, must be absolute path
---   name = 'lldb'
--- }
--- dap.listeners.before.attach.dapui_config = function()
---   dapui.open()
--- end
--- dap.listeners.before.launch.dapui_config = function()
---   dapui.open()
--- end
--- dap.listeners.before.event_terminated.dapui_config = function()
---   dapui.close()
--- end
--- dap.listeners.before.event_exited.dapui_config = function()
---   dapui.close()
--- end
-
--- dap.configurations.cpp = {
---   {
---     name = 'Launch',
---     type = 'codelldb',
---     request = 'launch',
---     program = function()
---       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
---     end,
---     cwd = '${workspaceFolder}',
---     stopOnEntry = false,
---     args = {},
---   },
--- }
-
--- dap.configurations.c = dap.configurations.cpp
--- dap.configurations.rust = dap.configurations.cpp
 
 ------------------------------------------------------------------------------------------ Autocompletion
 -- Plug 'hrsh7th/nvim-cmp' 
@@ -284,6 +258,18 @@ vim.diagnostic.config({
     virtual_text = true
 })
 
+local copilot_chat = require("CopilotChat").setup{
+    debug = true,
+}
+vim.keymap.set({'n', 'x'}, '<leader>cc', ':CopilotChat<cr>', {noremap = true})
+-- vim.keymap.set('n', '<leader>ccb', '<cmd>CopilotChatBuffer<cr>', {noremap = true})
+-- vim.keymap.set('n', '<leader>cce', '<cmd>CopilotChatExplain<cr>', {noremap = true})
+-- vim.keymap.set('n', '<leader>cct', '<cmd>CopilotChatTests<cr>', {noremap = true})
+-- vim.keymap.set('x', '<leader>ccv', ':CopilotChatVisual<cr>', {noremap = true})
+-- vim.keymap.set('x', '<leader>ccx', ':CopilotChatInPlace<cr>', {noremap = true})
+------------------------------------------------------------------------------------------ Formatter
+vim.keymap.set('n', '<leader>fo', '<Plug>(Prettier)')
+
 ------------------------------------------------------------------------------------------ Snippets
 -- Plug ('L3MON4D3/LuaSnip', {['tag'] = 'v2.*', ['do'] = 'make install_jsregexp'})
 -- Plug 'rafamadriz/friendly-snippets'
@@ -315,8 +301,7 @@ end, {silent = true})
 -- vim.keymap.set({"i", "s"}, "<Tab>", function() luasnip.jump( 1) end, {silent = true})
 -- vim.keymap.set({"i", "s"}, "<S-Tab>", function() luasnip.jump(-1) end, {silent = true})
 
-vim.keymap.set({"i", "s"}, "<C-e>", function()
-	if luasnip.choice_active() then
+vim.keymap.set({"i", "s"}, "<C-e>", function() if luasnip.choice_active() then
 		luasnip.change_choice(1)
 	end
 end, {silent = true})
@@ -387,7 +372,7 @@ require('colorizer').setup()
 -- Plug 'ryanoasis/vim-devicons' -- icons
 -- Plug 'ellisonleao/gruvbox.nvim' -- color scheme
 require('gruvbox').setup({
-    contrast_dark = 'soft',
+    contrast = 'hard',
 })
 vim.cmd([[
 autocmd FileType * set formatoptions-=cro
