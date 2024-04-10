@@ -118,3 +118,8 @@ bindkey -s ^f "sh ~/.config/alacritty/scripts/tmux-sessionizer.sh\n"
 
 # To customize prompt, run `p10k configure` or edit ~/Documents/GitHub/dotfiles/p10k/.p10k.zsh.
 [[ ! -f ~/Documents/GitHub/dotfiles/p10k/.p10k.zsh ]] || source ~/Documents/GitHub/dotfiles/p10k/.p10k.zsh
+
+#to add this to the fpath:
+# mkdir -p ${ZDOTDIR:-~}/.zsh_functions
+# echo 'fpath+=${ZDOTDIR:-~}/.zsh_functions' >> ${ZDOTDIR:-~}/.zshrc
+fpath+=${ZDOTDIR:-~}/.zsh_functions
