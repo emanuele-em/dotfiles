@@ -12,7 +12,10 @@ size = 10.0
 [window]
 padding.x = 0
 padding.y = 0
-decorations = "Full"
+decorations ="Full"
+dynamic_padding = true
+dynamic_title = false
+decorations_theme_variant = "Dark"
 
 [colors]
 cursor.text = "#111111"

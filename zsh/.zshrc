@@ -123,3 +123,12 @@ bindkey -s ^f "sh ~/.config/alacritty/scripts/tmux-sessionizer.sh\n"
 # mkdir -p ${ZDOTDIR:-~}/.zsh_functions
 # echo 'fpath+=${ZDOTDIR:-~}/.zsh_functions' >> ${ZDOTDIR:-~}/.zshrc
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/emanuele/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

@@ -21,8 +21,6 @@ Plug 'zbirenbaum/copilot.lua'
 Plug ('CopilotC-Nvim/CopilotChat.nvim', { branch = 'canary' })
 end
 
--- Plug 'simrat39/rust-tools.nvim' -- rust tools
-
 ------------------------------------------------------------------------------------------ debugger
 
 ------------------------------------------------------------------------------------------ Autocompletion
@@ -95,7 +93,7 @@ vim.call('plug#end')
 
 -- Basic behavior
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.wrap = false
 vim.opt.showmatch = true
 vim.opt.tabstop =4
@@ -111,6 +109,7 @@ vim.opt.undofile = true
 vim.opt.termguicolors = true
 vim.opt.wildmode = {'list', 'longest'}
 vim.opt.laststatus = 3
+vim.opt.statusline = "%#TabLineSel#%f %#TabLine#%=[%l,%v] %p%%"
 vim.opt.breakindent = true
 vim.opt.signcolumn = 'yes'
 vim.opt.autochdir = false
@@ -262,11 +261,7 @@ local copilot_chat = require("CopilotChat").setup{
     debug = true,
 }
 vim.keymap.set({'n', 'x'}, '<leader>cc', ':CopilotChat<cr>', {noremap = true})
--- vim.keymap.set('n', '<leader>ccb', '<cmd>CopilotChatBuffer<cr>', {noremap = true})
--- vim.keymap.set('n', '<leader>cce', '<cmd>CopilotChatExplain<cr>', {noremap = true})
--- vim.keymap.set('n', '<leader>cct', '<cmd>CopilotChatTests<cr>', {noremap = true})
--- vim.keymap.set('x', '<leader>ccv', ':CopilotChatVisual<cr>', {noremap = true})
--- vim.keymap.set('x', '<leader>ccx', ':CopilotChatInPlace<cr>', {noremap = true})
+
 ------------------------------------------------------------------------------------------ Formatter
 vim.keymap.set('n', '<leader>fo', '<Plug>(Prettier)')
 
@@ -297,9 +292,6 @@ vim.keymap.set({"i", "s"}, "<S-Tab>", function()
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true), "n")
     end
 end, {silent = true})
-
--- vim.keymap.set({"i", "s"}, "<Tab>", function() luasnip.jump( 1) end, {silent = true})
--- vim.keymap.set({"i", "s"}, "<S-Tab>", function() luasnip.jump(-1) end, {silent = true})
 
 vim.keymap.set({"i", "s"}, "<C-e>", function() if luasnip.choice_active() then
 		luasnip.change_choice(1)
@@ -403,7 +395,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Plug 'folke/zen-mode.nvim'
 require('zen-mode').setup{
     window = {
-        width = 90,
+        width = 120,
         options = { }
     }
 }
