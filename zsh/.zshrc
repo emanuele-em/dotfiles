@@ -132,3 +132,4 @@ path=('/home/emanuele/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+export PATH=$PATH:~/.cargo/bin/
