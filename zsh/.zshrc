@@ -110,7 +110,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.nvm/nvm.sh
 
 #keyBindings
-bindkey -s ^f "sh ~/.config/alacritty/scripts/tmux-sessionizer.sh\n"
+bindkey -s ^f "bash ~/.config/alacritty/scripts/tmux-sessionizer.sh\n"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -132,3 +132,7 @@ path=('/home/emanuele/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+export PATH=$PATH:~/.cargo/bin/
+
+# Created by `pipx` on 2024-05-11 14:06:35
+export PATH="$PATH:/home/emanuele/.local/bin"
