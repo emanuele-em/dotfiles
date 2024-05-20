@@ -122,7 +122,7 @@ bindkey -s ^f "bash ~/.config/alacritty/scripts/tmux-sessionizer.sh\n"
 #to add this to the fpath:
 # mkdir -p ${ZDOTDIR:-~}/.zsh_functions
 # echo 'fpath+=${ZDOTDIR:-~}/.zsh_functions' >> ${ZDOTDIR:-~}/.zshrc
-fpath+=${ZDOTDIR:-~}/.zsh_functions
+# fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # >>> juliaup initialize >>>
 
@@ -136,3 +136,4 @@ export PATH=$PATH:~/.cargo/bin/
 
 # Created by `pipx` on 2024-05-11 14:06:35
 export PATH="$PATH:/home/emanuele/.local/bin"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
