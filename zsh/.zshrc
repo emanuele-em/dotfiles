@@ -122,7 +122,7 @@ bindkey -s ^f "bash ~/.config/alacritty/scripts/tmux-sessionizer.sh\n"
 #to add this to the fpath:
 # mkdir -p ${ZDOTDIR:-~}/.zsh_functions
 # echo 'fpath+=${ZDOTDIR:-~}/.zsh_functions' >> ${ZDOTDIR:-~}/.zshrc
-fpath+=${ZDOTDIR:-~}/.zsh_functions
+# fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # >>> juliaup initialize >>>
 
@@ -140,3 +140,4 @@ export PATH="$PATH:/home/emanuele/.local/bin"
 # add deno to path
 export DENO_INSTALL="/Users/emanuelemicheletti/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
