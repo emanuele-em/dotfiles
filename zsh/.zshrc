@@ -136,3 +136,7 @@ export PATH=$PATH:~/.cargo/bin/
 
 # Created by `pipx` on 2024-05-11 14:06:35
 export PATH="$PATH:/home/emanuele/.local/bin"
+
+# add deno to path
+export DENO_INSTALL="/Users/emanuelemicheletti/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
