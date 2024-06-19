@@ -136,4 +136,6 @@ export PATH=$PATH:~/.cargo/bin/
 
 # Created by `pipx` on 2024-05-11 14:06:35
 export PATH="$PATH:/home/emanuele/.local/bin"
+export PATH="$PATH:/home/emanuele/bin"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+
