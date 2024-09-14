@@ -58,7 +58,7 @@ Plug 'windwp/nvim-autopairs' -- autopairs
 Plug 'norcalli/nvim-colorizer.lua' -- colorize hex code like #ff0000
 Plug 'hrsh7th/cmp-cmdline'
 end
-Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
+-- Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
 
 ------------------------------------------------------------------------------------------ themes
 if not vim.g.vscode then
@@ -118,8 +118,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.scrolloff = 8
 vim.o.background = "dark"
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.g.netrw_liststyle=3
 vim.opt.completeopt = {'menuone', 'noselect', 'noinsert'}
 vim.opt.shortmess = vim.opt.shortmess + { c = true}
 vim.api.nvim_set_option('updatetime', 50) 
@@ -300,8 +299,8 @@ end, {silent = true})
 
 ------------------------------------------------------------------------------------------ LSP trouble
 -- Plug 'folke/trouble.nvim' -- lsp trouble
-require('trouble').setup({ icons = false, })
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle workspace_diagnostics<cr>", {silent = true, noremap = true})
+require('trouble').setup()
+vim.keymap.set("n", "<leader>xq", "<cmd>Trouble diagnostics toggle<cr>")
 
 ------------------------------------------------------------------------------------------ Misc and additional
 
@@ -323,7 +322,7 @@ vim.keymap.set("n", "<C-n>", function() ui.nav_prev() end)
 vim.keymap.set("n", "<C-p>", function() ui.nav_next() end)
 
 -- Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
-require('Comment').setup()
+-- require('Comment').setup()
 
 -- Plug 'rrethy/vim-illuminate' -- highlight all instances of word under cursor
 require('illuminate').configure({
