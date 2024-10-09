@@ -2,17 +2,12 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.local/share/nvim/plugged')
 
 ------------------------------------------------------------------------------------------ Foundational
-if not vim.g.vscode then
 Plug 'nvim-lua/plenary.nvim'
-end
 
 ------------------------------------------------------------------------------------------ Language Features
-if not vim.g.vscode then
 Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate'})
-end
 
 ------------------------------------------------------------------------------------------ LSP
-if not vim.g.vscode then
 Plug ('VonHeikemen/lsp-zero.nvim', {branch = 'v3.x'})
 Plug ('williamboman/mason.nvim', { ['do'] = ':MasonUpdate'}) -- to install language servers
 Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
@@ -20,11 +15,9 @@ Plug 'neovim/nvim-lspconfig' -- language server
 Plug 'zbirenbaum/copilot.lua'
 Plug ('CopilotC-Nvim/CopilotChat.nvim', { branch = 'canary' })
 Plug ('towolf/vim-helm')
-end
 
 ------------------------------------------------------------------------------------------ Autocompletion
 
-if not vim.g.vscode then
 Plug 'hrsh7th/nvim-cmp' 
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -33,62 +26,45 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'zbirenbaum/copilot-cmp'
-end
 
 ------------------------------------------------------------------------------------------ Formatter
 
 Plug ('prettier/vim-prettier', { ['do'] = 'yarn install --frozen-lockfile --production' })
 ------------------------------------------------------------------------------------------ Snippets
-if not vim.g.vscode then
 Plug ('L3MON4D3/LuaSnip', {tag = 'v2.*', ['do'] = 'make install_jsregexp'})
 Plug 'rafamadriz/friendly-snippets'
-end
 
 ------------------------------------------------------------------------------------------ LSP trouble
-if not vim.g.vscode then
 Plug 'folke/trouble.nvim' -- lsp trouble
-end
 
 ------------------------------------------------------------------------------------------ Misc and additional
-if not vim.g.vscode then
 Plug 'ThePrimeagen/harpoon' -- to save and jump to bookmarks
 Plug 'rrethy/vim-illuminate' -- highlight all instances of word under cursor
 Plug 'windwp/nvim-autopairs' -- autopairs
 Plug 'norcalli/nvim-colorizer.lua' -- colorize hex code like #ff0000
 Plug 'hrsh7th/cmp-cmdline'
-end
 Plug 'numToStr/Comment.nvim' -- comment with gcc shrot cut
 
 ------------------------------------------------------------------------------------------ themes
-if not vim.g.vscode then
 Plug 'ryanoasis/vim-devicons' -- icons
 Plug 'ellisonleao/gruvbox.nvim' -- color scheme
 Plug 'projekt0n/github-nvim-theme' -- color scheme 
 Plug ('j-hui/fidget.nvim', { tag = 'legacy' })  -- lsp bottom right status
-end
 
 ------------------------------------------------------------------------------------------ Navigation
-if not vim.g.vscode then
 Plug('nvim-telescope/telescope.nvim', {tag = '0.1.x' })
 Plug 'airblade/vim-gitgutter' -- show git diff in sign column
 Plug 'tpope/vim-surround' -- surround text with brackets
 Plug 'jiaoshijie/undotree'
-end
 
 ------------------------------------------------------------------------------------------Latex
-if not vim.g.vscode then
 Plug 'lervag/vimtex' -- compile latex
-end
 
 ------------------------------------------------------------------------------------------ Productivity
-if not vim.g.vscode then
 Plug 'folke/zen-mode.nvim'
-end
 
 ------------------------------------------------------------------------------------------ Movements
-if not vim.g.vscode then
 Plug 'phaazon/hop.nvim' -- jump to word in the buffer
-end
 
 vim.call('plug#end')
 
@@ -183,17 +159,17 @@ end)
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver','pyright', 'jsonls', 'rust_analyzer'},
+  ensure_installed = {'ts_ls','pyright', 'jsonls', 'rust_analyzer'},
   handlers = {
-    -- lsp_zero.default_setup,
-    function(server_name)
-      if server_name == 'tsserver' then
-        server_name = 'ts_ls'
-        lsp_zero.default_setup(server_name)
-      else
-        lsp_zero.default_setup(server_name)
-      end
-    end
+    lsp_zero.default_setup,
+    -- function(server_name)
+    --   if server_name == 'tsserver' then
+    --     server_name = 'ts_ls'
+    --     lsp_zero.default_setup(server_name)
+    --   else
+    --     lsp_zero.default_setup(server_name)
+    --   end
+    -- end
   },
 })
 
