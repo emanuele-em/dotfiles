@@ -352,7 +352,22 @@ require('gruvbox').setup({
 vim.cmd([[
 autocmd FileType * set formatoptions-=cro
 colorscheme gruvbox
-highlight illuminatedWordText gui=underline
+
+  function! SetIlluminatedHighlight()
+    if &background == "dark"
+      highlight illuminatedWordText guibg=#44475a gui=bold
+    else
+      highlight illuminatedWordText guibg=#dcdfe4 gui=bold
+    endif
+  endfunction
+
+  call SetIlluminatedHighlight()
+
+  augroup IlluminatedHighlight
+    autocmd!
+    autocmd ColorScheme * call SetIlluminatedHighlight()
+  augroup END
+" highlight illuminatedWordText gui=underline
 ]])
 
 require("fidget").setup{}
