@@ -24,7 +24,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'zbirenbaum/copilot-cmp'
 
 ------------------------------------------------------------------------------------------ Formatter
@@ -288,7 +287,7 @@ vim.keymap.set("n", "<leader>xq", "<cmd>Trouble diagnostics toggle<cr>", {silent
 
 ------------------------------------------------------------------------------------------ Misc and additional
 
--- Plug 'zbirenbaum/copilot.lua'
+Plug 'zbirenbaum/copilot.lua'
 require('copilot').setup({
     suggestion = {
         enabled = false,
