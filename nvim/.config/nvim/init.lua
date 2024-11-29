@@ -93,7 +93,7 @@ vim.call('plug#end')
 
 -- Basic behavior
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.showmatch = true
 vim.opt.tabstop =4
