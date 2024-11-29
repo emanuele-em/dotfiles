@@ -14,14 +14,13 @@ end
 ------------------------------------------------------------------------------------------ LSP
 if not vim.g.vscode then
 Plug ('VonHeikemen/lsp-zero.nvim', {branch = 'v3.x'})
-Plug 'neovim/nvim-lspconfig' -- language server
-Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
 Plug ('williamboman/mason.nvim', { ['do'] = ':MasonUpdate'}) -- to install language servers
+Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
+Plug 'neovim/nvim-lspconfig' -- language server
 Plug 'zbirenbaum/copilot.lua'
 Plug ('CopilotC-Nvim/CopilotChat.nvim', { branch = 'canary' })
+Plug ('towolf/vim-helm')
 end
-
------------------------------------------------------------------------------------------- debugger
 
 ------------------------------------------------------------------------------------------ Autocompletion
 
@@ -64,6 +63,7 @@ end
 if not vim.g.vscode then
 Plug 'ryanoasis/vim-devicons' -- icons
 Plug 'ellisonleao/gruvbox.nvim' -- color scheme
+Plug 'projekt0n/github-nvim-theme' -- color scheme 
 Plug ('j-hui/fidget.nvim', { tag = 'legacy' })  -- lsp bottom right status
 end
 
@@ -72,6 +72,7 @@ if not vim.g.vscode then
 Plug('nvim-telescope/telescope.nvim', {tag = '0.1.x' })
 Plug 'airblade/vim-gitgutter' -- show git diff in sign column
 Plug 'tpope/vim-surround' -- surround text with brackets
+Plug 'jiaoshijie/undotree'
 end
 
 ------------------------------------------------------------------------------------------Latex
@@ -96,10 +97,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.showmatch = true
-vim.opt.tabstop =4
+vim.opt.tabstop = 2
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.smartindent = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = false
@@ -119,6 +120,7 @@ vim.opt.backup = false
 vim.opt.scrolloff = 8
 vim.o.background = "dark"
 vim.g.netrw_liststyle=3
+vim.g.netrw_banner = 0
 vim.opt.completeopt = {'menuone', 'noselect', 'noinsert'}
 vim.opt.shortmess = vim.opt.shortmess + { c = true}
 vim.api.nvim_set_option('updatetime', 50) 
@@ -152,7 +154,7 @@ require'nvim-treesitter.configs'.setup {
   auto_install = true,
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = {"helm"},
   },
 }
 
@@ -179,13 +181,19 @@ lsp_zero.on_attach(function(client, bufnr)
     -- end, opts)
 end)
 
-require('mason').setup({
-    ensure_installed = {'clangd', 'clang-format', 'codelldb', 'prettierd'},
-})
+require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer', 'clangd'},
+  ensure_installed = {'tsserver','pyright', 'jsonls', 'rust_analyzer'},
   handlers = {
-    lsp_zero.default_setup,
+    -- lsp_zero.default_setup,
+    function(server_name)
+      if server_name == 'tsserver' then
+        server_name = 'ts_ls'
+        lsp_zero.default_setup(server_name)
+      else
+        lsp_zero.default_setup(server_name)
+      end
+    end
   },
 })
 
@@ -300,7 +308,7 @@ end, {silent = true})
 ------------------------------------------------------------------------------------------ LSP trouble
 -- Plug 'folke/trouble.nvim' -- lsp trouble
 require('trouble').setup()
-vim.keymap.set("n", "<leader>xq", "<cmd>Trouble diagnostics toggle<cr>")
+vim.keymap.set("n", "<leader>xq", "<cmd>Trouble diagnostics toggle<cr>", {silent = true, noremap = true})
 
 ------------------------------------------------------------------------------------------ Misc and additional
 
@@ -368,10 +376,9 @@ require('gruvbox').setup({
 vim.cmd([[
 autocmd FileType * set formatoptions-=cro
 colorscheme gruvbox
-highlight illuminatedWordText guibg=#504945
+highlight illuminatedWordText gui=underline
 ]])
 
--- Plug ('j-hui/fidget.nvim', { ['tag']= 'legacy' })  -- lsp bottom right status
 require("fidget").setup{}
 
 ------------------------------------------------------------------------------------------ Navigation
@@ -383,9 +390,9 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
--- Plug 'airblade/vim-gitgutter' -- show git diff in sign column
-
--- Plug 'tpope/vim-surround' -- surround text with brackets
+-- Plug Plug 'jiaoshijie/undotree' -- undo tree
+require('undotree').setup()
+vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
 
 -------------------------------------------------------------------------------------------Latex
 -- Plug 'lervag/vimtex' -- compile latex

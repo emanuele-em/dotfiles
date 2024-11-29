@@ -139,7 +139,7 @@ export PATH="$PATH:/home/emanuele/.local/bin"
 export PATH="$PATH:/home/emanuele/bin"
 
 # add deno to path
-export DENO_INSTALL="/Users/emanuelemicheletti/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+# export DENO_INSTALL="/Users/emanuelemicheletti/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
