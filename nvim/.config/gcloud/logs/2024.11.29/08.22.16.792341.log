@@ -1,9 +1,0 @@
-2024-11-29 08:22:16,793 DEBUG    root            Loaded Command Group: ['gcloud', 'config']
-2024-11-29 08:22:16,869 DEBUG    root            Loaded Command Group: ['gcloud', 'config', 'set']
-2024-11-29 08:22:16,869 DEBUG    root            Running [gcloud.config.set] with arguments: [SECTION/PROPERTY: "project", VALUE: "smartpricing-272315"]
-2024-11-29 08:22:16,887 DEBUG    urllib3.connectionpool Starting new HTTPS connection (1): cloudresourcemanager.googleapis.com:443
-2024-11-29 08:22:17,847 DEBUG    urllib3.connectionpool https://cloudresourcemanager.googleapis.com:443 "GET /v1/projects/smartpricing-272315?alt=json HTTP/1.1" 200 None
-2024-11-29 08:22:17,853 INFO     ___FILE_ONLY___ Updated property [core/project].
-
-2024-11-29 08:22:17,854 DEBUG    root            Chosen display Format:default
-2024-11-29 08:22:17,855 INFO     root            Display format: "default"
