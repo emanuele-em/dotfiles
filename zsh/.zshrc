@@ -130,18 +130,20 @@ export NVM_DIR="$HOME/.nvm"
 
 # !! Contents within this block are managed by juliaup !!
 
-path=('/home/emanuele/.juliaup/bin' $path)
+path=("$HOME/.juliaup/bin" $path)
 export PATH
 
 # <<< juliaup initialize <<<
 export PATH=$PATH:~/.cargo/bin/
-
-# Created by `pipx` on 2024-05-11 14:06:35
-export PATH="$PATH:/home/emanuele/.local/bin"
-export PATH="$PATH:/home/emanuele/bin"
 
 # add deno to path
 # export DENO_INSTALL="/Users/emanuelemicheletti/.deno"
 # export PATH="$DENO_INSTALL/bin:$PATH"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+
+# Created by `pipx` on 2024-11-29 09:16:59
+export PATH="$PATH:/Users/Emanuele/.local/bin"
+
+#manually added
+export PATH="$PATH:$HOME/dsbulk/bin/"

@@ -183,17 +183,17 @@ end)
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver','pyright', 'jsonls', 'rust_analyzer'},
+  ensure_installed = {'ts_ls','pyright', 'jsonls', 'rust_analyzer'},
   handlers = {
-    -- lsp_zero.default_setup,
-    function(server_name)
-      if server_name == 'tsserver' then
-        server_name = 'ts_ls'
-        lsp_zero.default_setup(server_name)
-      else
-        lsp_zero.default_setup(server_name)
-      end
-    end
+    lsp_zero.default_setup,
+  --   function(server_name)
+  --     if server_name == 'tsserver' then
+  --       server_name = 'ts_ls'
+  --       lsp_zero.default_setup(server_name)
+  --     else
+  --       lsp_zero.default_setup(server_name)
+  --     end
+  --   end
   },
 })
 
