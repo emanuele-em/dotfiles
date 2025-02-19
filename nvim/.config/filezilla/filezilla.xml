@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <FileZilla3 version="3.68.1" platform="mac">
 	<Settings>
 		<Setting name="Use Pasv mode">1</Setting>
@@ -7,9 +7,9 @@
 		<Setting name="Limit ports high">7000</Setting>
 		<Setting name="Limit ports offset">0</Setting>
 		<Setting name="External IP mode">0</Setting>
-		<Setting name="External IP"></Setting>
+		<Setting name="External IP" />
 		<Setting name="External address resolver">http://ip.filezilla-project.org/ip.php</Setting>
-		<Setting name="Last resolved IP"></Setting>
+		<Setting name="Last resolved IP" />
 		<Setting name="No external ip on local conn">1</Setting>
 		<Setting name="Pasv reply fallback mode">0</Setting>
 		<Setting name="Timeout">20</Setting>
@@ -27,18 +27,18 @@
 		<Setting name="Socket send buffer size (v2)">262144</Setting>
 		<Setting name="FTP Keep-alive commands">0</Setting>
 		<Setting name="FTP Proxy type">0</Setting>
-		<Setting name="FTP Proxy host"></Setting>
-		<Setting name="FTP Proxy user"></Setting>
-		<Setting name="FTP Proxy password"></Setting>
-		<Setting name="FTP Proxy login sequence"></Setting>
-		<Setting name="SFTP keyfiles" platform="mac"></Setting>
+		<Setting name="FTP Proxy host" />
+		<Setting name="FTP Proxy user" />
+		<Setting name="FTP Proxy password" />
+		<Setting name="FTP Proxy login sequence" />
+		<Setting name="SFTP keyfiles" platform="mac" />
 		<Setting name="SFTP compression">0</Setting>
 		<Setting name="Proxy type">0</Setting>
-		<Setting name="Proxy host"></Setting>
+		<Setting name="Proxy host" />
 		<Setting name="Proxy port">0</Setting>
-		<Setting name="Proxy user"></Setting>
-		<Setting name="Proxy password"></Setting>
-		<Setting name="Logging file" platform="mac"></Setting>
+		<Setting name="Proxy user" />
+		<Setting name="Proxy password" />
+		<Setting name="Logging file" platform="mac" />
 		<Setting name="Logging filesize limit">10</Setting>
 		<Setting name="Size format">0</Setting>
 		<Setting name="Size thousands separator">1</Setting>
@@ -48,7 +48,7 @@
 		<Setting name="Minimum TLS Version">2</Setting>
 		<Setting name="Directory listing item limit">10000000</Setting>
 		<Setting name="Kiosk mode">0</Setting>
-		<Setting name="Master password encryptor"></Setting>
+		<Setting name="Master password encryptor" />
 		<Setting name="Trust system trust store">0</Setting>
 		<Setting name="Ascii Binary mode">0</Setting>
 		<Setting name="Auto Ascii no extension">1</Setting>
@@ -58,30 +58,30 @@
 		<Setting name="Update Check">1</Setting>
 		<Setting name="Update Check Interval">7</Setting>
 		<Setting name="Update Check Check Beta">0</Setting>
-		<Setting name="Cache directory" platform="mac"></Setting>
+		<Setting name="Cache directory" platform="mac" />
 		<Setting name="Number of Transfers">2</Setting>
-		<Setting name="Language Code"></Setting>
+		<Setting name="Language Code" />
 		<Setting name="Concurrent download limit">0</Setting>
 		<Setting name="Concurrent upload limit">0</Setting>
 		<Setting name="Show debug menu">0</Setting>
 		<Setting name="File exists action download">0</Setting>
 		<Setting name="File exists action upload">0</Setting>
 		<Setting name="Allow ascii resume">0</Setting>
-		<Setting name="Greeting resources"></Setting>
-		<Setting name="Onetime Dialogs"></Setting>
+		<Setting name="Greeting resources" />
+		<Setting name="Onetime Dialogs" />
 		<Setting name="Show Tree Local">1</Setting>
 		<Setting name="Show Tree Remote">1</Setting>
 		<Setting name="File Pane Layout">0</Setting>
 		<Setting name="File Pane Swap">0</Setting>
 		<Setting name="Filelist directory sort">0</Setting>
 		<Setting name="Queue successful autoclear">0</Setting>
-		<Setting name="Time Format"></Setting>
-		<Setting name="Date Format"></Setting>
+		<Setting name="Time Format" />
+		<Setting name="Date Format" />
 		<Setting name="Show message log">1</Setting>
 		<Setting name="Show queue">1</Setting>
-		<Setting name="Default editor" platform="mac"></Setting>
+		<Setting name="Default editor" platform="mac" />
 		<Setting name="Always use default editor">0</Setting>
-		<Setting name="File associations (v2)" platform="mac"></Setting>
+		<Setting name="File associations (v2)" platform="mac" />
 		<Setting name="Comparison mode">1</Setting>
 		<Setting name="Icon theme">default</Setting>
 		<Setting name="Icon scale">125</Setting>
@@ -93,144 +93,69 @@
 		<Setting name="File doubleclick action">0</Setting>
 		<Setting name="Dir doubleclick action">0</Setting>
 		<Setting name="Minimize to tray">0</Setting>
-		<Setting name="Search column widths"></Setting>
-		<Setting name="Search column shown"></Setting>
-		<Setting name="Search column order"></Setting>
-		<Setting name="Search window size"></Setting>
+		<Setting name="Search column widths" />
+		<Setting name="Search column shown" />
+		<Setting name="Search column order" />
+		<Setting name="Search window size" />
 		<Setting name="Comparison hide identical">0</Setting>
-		<Setting name="Search sort order"></Setting>
+		<Setting name="Search sort order" />
 		<Setting name="Edit track local">1</Setting>
 		<Setting name="Prevent idle sleep">1</Setting>
-		<Setting name="Filteredit window size"></Setting>
+		<Setting name="Filteredit window size" />
 		<Setting name="Enable invalid char filter">1</Setting>
 		<Setting name="Invalid char replace">_</Setting>
-		<Setting name="Edit status dialog size"></Setting>
+		<Setting name="Edit status dialog size" />
 		<Setting name="Display current speed">0</Setting>
 		<Setting name="Toolbar hidden">0</Setting>
 		<Setting name="Strip VMS revisions">0</Setting>
 		<Setting name="Startup action">0</Setting>
 		<Setting name="Persistent Choices">0</Setting>
 		<Setting name="Queue completion action">1</Setting>
-		<Setting name="Queue completion command"></Setting>
+		<Setting name="Queue completion command" />
 		<Setting name="Drag and Drop disabled">0</Setting>
 		<Setting name="Disable update footer">0</Setting>
 		<Setting name="Highest shown overlay id">0</Setting>
-		<Setting name="Speedlimit inbound">100</Setting>
-		<Setting name="Speedlimit outbound">20</Setting>
-		<Setting name="Auto Ascii files">am|asp|bat|c|cfm|cgi|conf|cpp|css|dhtml|diz|h|hpp|htm|html|in|inc|java|js|jsp|lua|m4|mak|md5|nfo|nsi|pas|patch|php|phtml|pl|po|py|qmail|sh|sha1|sha256|sha512|shtml|sql|svg|tcl|tpl|txt|vbs|xhtml|xml|xrc</Setting>
-		<Setting name="Last automatic update check">2024-11-29 10:43:34</Setting>
-		<Setting name="Last automatic update version">3.64.0</Setting>
-		<Setting name="Update Check New Version" platform="mac">nightly 2024-11-29 https://filezilla-project.org/nightlies/2024-11-29/x86_64-apple-darwin18.2.0/FileZilla3.app.tar.bz2 15420832 sha512 a9ef8c64bc2e0b18c6f29a41f43dbd25459f9f3fdc185e69a061cfe4b692c18f51d2cd54e073656b30fc6d15330c2958bae235e10a8f280b5efadd9873ef67c5 sig:3ajX15dA7ZOEoybO5q8pK+v6reOGYOCx/F6bD3/LvuwubeN6ScWWRU/vzsM5wnDXsJlGTrsX1ujIhtmVsl4YDg
-release 3.68.1 https://dl2.cdn.filezilla-project.org/FileZilla_3.68.1_macos-x86.app.tar.bz2 15543515 sha512 d47ba2145cd9698f98143654d2ca651d2a528356f645a965a983bdb42cf8814fbdbb3bcaa5899ee278ee7e8384339aed306d32aa6e32fd4311433c4b6fb9472e sig:vXSFr1hObaRIMhGEuDfX7LKxTmeqiDRClYSTt8WwMHyjbrgnVyynwexg5cfGhOCRsZmNVIsErdMYZlYGglaIBg
-
-3.68.1 (2024-11-04)
-
-+ macOS: Fixed a build issue affecting App Notarization on arm64
-- Updated translations
-
-3.68.0 (2024-10-31)
-
-+ Added option to always refresh remote directory listings when starting a recursive operation
-- Changing logfile settings no longer requires a restart of FileZilla
-- Fixed a display issue with special characters in usernames
-- MSW: Fixed local file list not updating after renaming or deleting items
-- SFTP: Update interval of transfer progress during uploads should now be more consistent on very slow connections
-- Updated to libfilezilla 0.49.0
-
-3.67.1 (2024-07-10)
-
-- MSW: Fixed an issue with confirmation dialogs for file deletion not being modal
-- Updated to libfilezilla 0.48.1
-
-3.67.1-rc1 (2024-06-27)
-
-- Fixed an issue migrating old queue files if several older versions have been skipped
-- Updated to libfilezilla 0.48.0
-
-3.67.0 (2024-04-15)
-
-! SFTP: Fixed PuTTY ECDSA NIST P-521 private key recovery vulnerability (CVE-2024-31497). If you use NIST P-521 keys to connect to SSH/SFTP servers, you should regenerate them and revoke the previous ones.
-! Official binaries are now built against GnuTLS 3.8.4
-- Updated to libfilezilla 0.47.0
-
-3.66.5 (2024-02-07)
-
-! Official binaries are now built againt GnuTLS 3.8.3
-- Updated to libfilezilla 0.46.0
-- MSW: Fixed tab navigation over message log
-
-3.66.4 (2023-12-20)
-
-! SFTP: Address Terrapin protocol vulnerability
-
-3.66.3-rc1 (2023-12-11)
-
-- Test release for macOS CPU architecture migration
-
-3.66.3-beta1 (2023-12-07)
-
-+ macOS: Now also distributing aarch64 binaries
-- macOS: Fixes for language detection
-- Fixed a potential crash in the HTTP client
-
-3.66.1 (2023-11-03)
-
-- macOS: Fixed display of local filenames containing non-ASCII characters if LC_CTYPE wasn't set
-
-3.66.0 (2023-10-23)
-
-- Fixed a sorting issue in comparative search
-
-3.66.0-rc1 (2023-10-11)
-
-- Fixed crash removing items from the list of file extensions treated as text files
-- Fixed potental crash if shutting down HTTP client.
-- Fixed HTTP timeouts
-
-3.65.0 (2023-07-10)
-
-+ Comparative search can now also be used if sorted by path
-- Fixed an issue in comparative search in directories with uppercase letters
-
-3.65.0-rc1 (2023-06-30)
-
-- Fixed potential crashes
-- Updated to libfilezilla 0.44.0
-</Setting>
-		<Setting name="Greeting version">3.64.0</Setting>
-		<Setting name="Filelist name sort">0</Setting>
 		<Setting name="Queue column widths">180 60 180 80 60 150</Setting>
-		<Setting name="Local filelist sortorder">0 0</Setting>
-		<Setting name="Remote filelist sortorder">0 0</Setting>
-		<Setting name="Sitemanager last selected">0/hektiovh</Setting>
 		<Setting name="Local filelist shown columns">1111</Setting>
 		<Setting name="Remote filelist shown columns">111111</Setting>
 		<Setting name="Local filelist column order">0,1,2,3</Setting>
 		<Setting name="Remote filelist column order">0,1,2,3,4,5</Setting>
-		<Setting name="Already connected choice">1</Setting>
+		<Setting name="Local filelist sortorder">0 0</Setting>
+		<Setting name="Remote filelist sortorder">0 0</Setting>
+		<Setting name="Speedlimit inbound">100</Setting>
+		<Setting name="Speedlimit outbound">20</Setting>
+		<Setting name="Auto Ascii files">am|asp|bat|c|cfm|cgi|conf|cpp|css|dhtml|diz|h|hpp|htm|html|in|inc|java|js|jsp|lua|m4|mak|md5|nfo|nsi|pas|patch|php|phtml|pl|po|py|qmail|sh|sha1|sha256|sha512|shtml|sql|svg|tcl|tpl|txt|vbs|xhtml|xml|xrc</Setting>
+		<Setting name="Filelist name sort">0</Setting>
 		<Setting name="Prompt password save">0</Setting>
-		<Setting name="Site Manager position">0 327 291 1056 473 </Setting>
+		<Setting name="Site Manager position">0 327 292 1056 473 </Setting>
+		<Setting name="Already connected choice">3</Setting>
 		<Setting name="Local filelist colwidths">170 80 120 120</Setting>
 		<Setting name="Remote filelist colwidths">150 75 80 100 80 85</Setting>
-		<Setting name="Window position and size">0 255 49 1200 891 </Setting>
+		<Setting name="Window position and size">0 255 50 1200 891 </Setting>
 		<Setting name="Splitter positions (v2)">97 -130 500000000 248 248 500000000</Setting>
+		<Setting name="Last automatic update check">2024-12-28 08:57:58</Setting>
+		<Setting name="Greeting version">3.68.1</Setting>
+		<Setting name="Last automatic update version">3.68.1</Setting>
+		<Setting name="Update Check New Version" platform="mac">release 3.67.0
+</Setting>
+		<Setting name="Sitemanager last selected">0/New site</Setting>
 		<Setting name="Tab data" sensitive="1">
 			<Tabs>
 				<Tab connected="1" selected="1">
-					<Host>ftp.cluster020.hosting.ovh.net</Host>
+					<Host>new.albergodelviale.com</Host>
 					<Port>21</Port>
-					<Protocol>0</Protocol>
+					<Protocol>6</Protocol>
 					<Type>0</Type>
-					<User>hekticomja</User>
-					<Pass encoding="base64">OVZwc3RaODRzMnRx</Pass>
+					<User>fc11_albergodelviale</User>
+					<Pass encoding="base64">ZVc0ZDNKZDhKLG9rVXI=</Pass>
 					<Logontype>1</Logontype>
 					<PasvMode>MODE_DEFAULT</PasvMode>
 					<EncodingType>Auto</EncodingType>
 					<BypassProxy>0</BypassProxy>
-					<Name>hektiovh</Name>
-					<Site>0/hektiovh</Site>
-					<RemotePath>1 0</RemotePath>
-					<LocalPath>/Users/Emanuele/</LocalPath>
+					<Name>New site</Name>
+					<Site>0/New site</Site>
+					<RemotePath>1 0 4 html</RemotePath>
+					<LocalPath>/Users/Emanuele/Dropbox/WEBSITES/albergodelviale.it/bozza2/html/</LocalPath>
 				</Tab>
 			</Tabs>
 		</Setting>

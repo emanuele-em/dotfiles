@@ -1,0 +1,25 @@
+theme = "gruvbox_dark_hard"
+
+[editor]
+true-color = true
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line="warning"
+
+[editor.lsp]
+display-inlay-hints=false
+display-progress-messages = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "register", "position", "position-percentage","file-encoding"]

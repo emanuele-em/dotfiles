@@ -18,7 +18,7 @@ Plug ('williamboman/mason.nvim', { ['do'] = ':MasonUpdate'}) -- to install langu
 Plug 'williamboman/mason-lspconfig.nvim' -- to install language servers
 Plug 'neovim/nvim-lspconfig' -- language server
 Plug 'zbirenbaum/copilot.lua'
-Plug ('CopilotC-Nvim/CopilotChat.nvim', { branch = 'canary' })
+Plug ('CopilotC-Nvim/CopilotChat.nvim', { branch = 'main' })
 Plug ('towolf/vim-helm')
 end
 
@@ -64,6 +64,7 @@ if not vim.g.vscode then
 Plug 'ryanoasis/vim-devicons' -- icons
 Plug 'ellisonleao/gruvbox.nvim' -- color scheme
 Plug 'projekt0n/github-nvim-theme' -- color scheme 
+Plug ('catppuccin/nvim', { as = 'catppuccin' }) --color scheme
 Plug ('j-hui/fidget.nvim', { tag = 'legacy' })  -- lsp bottom right status
 end
 
@@ -73,6 +74,7 @@ Plug('nvim-telescope/telescope.nvim', {tag = '0.1.x' })
 Plug 'airblade/vim-gitgutter' -- show git diff in sign column
 Plug 'tpope/vim-surround' -- surround text with brackets
 Plug 'jiaoshijie/undotree'
+Plug 'stevearc/oil.nvim'
 end
 
 ------------------------------------------------------------------------------------------Latex
@@ -94,7 +96,7 @@ vim.call('plug#end')
 
 -- Basic behavior
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.wrap = false
 vim.opt.showmatch = true
 vim.opt.tabstop = 2
@@ -184,6 +186,7 @@ end)
 require('mason').setup()
 require('mason-lspconfig').setup({
   ensure_installed = {'ts_ls','pyright', 'jsonls', 'rust_analyzer'},
+
   handlers = {
     lsp_zero.default_setup,
   --   function(server_name)
@@ -203,6 +206,32 @@ lsp_zero.set_sign_icons({
   hint = '⚑',
   info = '»'
 })
+
+local nvim_lsp = require('lspconfig')
+
+nvim_lsp.denols.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+nvim_lsp.ts_ls.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  single_file_support = false,
+
+  init_options = {
+    plugins = { -- I think this was my breakthrough that made it work
+      {
+        name = "@vue/typescript-plugin",
+        location = "/Users/Emanuele/.local/share/nvm/v20.18.1/lib/node_modules/@vue/language-server",
+        languages = { "vue" },
+      },
+    },
+  },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+}
+
+nvim_lsp.volar.setup {}
 
 ------------------------------------------------------------------------------------------ Debugger
 
@@ -235,7 +264,11 @@ cmp.setup({
     ['<cr>'] = cmp.mapping.confirm({select = false}),
     ['<c-c>'] = cmp.mapping.complete(),
     ['<c-e>'] = cmp.mapping.close(),
-    }) 
+    }),
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    }
 })
 
 -- Plug 'hrsh7th/cmp-cmdline'
@@ -373,10 +406,17 @@ require('colorizer').setup()
 require('gruvbox').setup({
     contrast = 'hard',
 })
+-- require("rose-pine").setup()
+
 vim.cmd([[
-autocmd FileType * set formatoptions-=cro
-colorscheme gruvbox
-highlight illuminatedWordText gui=underline
+  autocmd FileType * set formatoptions-=cro
+  colorscheme gruvbox
+  set cursorline
+  highlight Normal guibg=None
+  highlight SignColumn guibg=None
+  highlight illuminatedWordText guibg=#3c3836
+  highlight CursorLine guibg=#101010 guifg=NONE
+  autocmd FileType vue setlocal commentstring=<!--\ %s\ -->
 ]])
 
 require("fidget").setup{}
@@ -393,6 +433,15 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Plug Plug 'jiaoshijie/undotree' -- undo tree
 require('undotree').setup()
 vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
+
+-- Plug 'stevearc/oil.nvim' -- navigation through buffer
+require("oil").setup({
+  delete_to_trash = true,
+  view_options = {
+    show_hidden = true
+  }
+})
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', {desc = "Open parent directory"})
 
 -------------------------------------------------------------------------------------------Latex
 -- Plug 'lervag/vimtex' -- compile latex

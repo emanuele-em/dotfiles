@@ -1,8 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <FileZilla3 version="3.68.1" platform="mac">
 	<InsecureHosts>
 		<Host Port="21">ftp.cluster020.hosting.ovh.net</Host>
-		<Host Port="21">new.albergodelviale.com</Host>
 	</InsecureHosts>
-	<TrustedCerts />
 </FileZilla3>

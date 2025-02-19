@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/Emanuele/.zsh/completions:"* ]]; then export FPATH="/Users/Emanuele/.zsh/completions:$FPATH"; fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -147,3 +149,7 @@ export PATH="$PATH:/Users/Emanuele/.local/bin"
 
 #manually added
 export PATH="$PATH:$HOME/dsbulk/bin/"
+. "/Users/Emanuele/.deno/env"
+# Initialize zsh completions (added by deno install script)
+autoload -Uz compinit
+compinit

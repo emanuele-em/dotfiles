@@ -2,9 +2,22 @@ local wezterm = require 'wezterm'
 
 local config = wezterm.config_builder()
 config.font = wezterm.font "FiraCode Nerd Font"
-config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } --disable ligatures
 -- config.font_size = 10.0
-config.audible_bell = "Disabled"
+-- config.audible_bell = "Disabled"
+config.color_scheme = 'Gruvbox dark, hard (base16)'
+config.colors = {
+  selection_bg = "rgba:50% 50% 50% 50%",
+  selection_fg = 'none'
+}
+config.scrollback_lines = 10000
+
+-- open full screen on startup
+local mux = wezterm.mux
+wezterm.on("gui-startup", function(cmd)
+    local tab, pane, window = mux.spawn_window(cmd or {})
+    window:gui_window():maximize()
+end)
 
 config.keys = {
   {
@@ -68,7 +81,5 @@ config.keys = {
       action = wezterm.action.ActivateTabRelative(1) 
   },
 }
-
-config.color_scheme = 'Gruvbox dark, hard (base16)'
 
 return config

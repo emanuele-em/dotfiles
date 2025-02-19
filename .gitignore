@@ -1,3 +1,6 @@
 .DS_Store
 ./nvim/.config/github-copilot
 nvim/.config/github-copilot/apps.json
+nvim/.config/gcloud/logs
+nvim/.config/gcloud
+nvim/.config/htop
