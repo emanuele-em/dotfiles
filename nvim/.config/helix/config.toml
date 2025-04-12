@@ -3,6 +3,10 @@ theme = "gruvbox_dark_hard"
 [editor]
 true-color = true
 end-of-line-diagnostics = "hint"
+line-number = 'relative'
+
+# [editor.whitespace]
+# render = "never"
 
 [editor.inline-diagnostics]
 cursor-line="warning"
