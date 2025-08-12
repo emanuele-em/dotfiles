@@ -1,9 +1,9 @@
 return {
   "saghen/blink.cmp",
   version = "*",
+  enabled = not vim.g.is_vscode,
   dependencies = {
     "L3MON4D3/LuaSnip",
-    "fang2hou/blink-copilot",
   },
   opts = {
     cmdline = {
@@ -55,7 +55,7 @@ return {
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
     sources = {
-      default = { "lazydev", "copilot", "lsp", "path", "snippets", "buffer" },
+      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
       per_filetype = {
         sql = { "snippets", "dadbod", "buffer" },
       },
@@ -64,12 +64,6 @@ return {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           score_offset = 100,
-        },
-        copilot = {
-          name = "copilot",
-          module = "blink-copilot",
-          score_offset = 100,
-          async = true,
         },
         dadbod = {
           name = "Dadbod",

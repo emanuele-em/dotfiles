@@ -1,6 +1,7 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
+    enabled = not vim.g.is_vscode,
     priority = 1000,
     lazy = false,
     opts = {
@@ -20,5 +21,9 @@ return {
 ]])
     end,
   },
-  { "nvim-tree/nvim-web-devicons", opts = {} },
+  { 
+    "nvim-tree/nvim-web-devicons", 
+    enabled = not vim.g.is_vscode,
+    opts = {} 
+  },
 }

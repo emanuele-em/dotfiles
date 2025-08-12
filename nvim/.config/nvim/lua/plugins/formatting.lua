@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  enabled = not vim.g.is_vscode,
   opts = {
     formatters_by_ft = {
       rust = { "rustfmt" },

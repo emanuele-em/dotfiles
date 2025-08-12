@@ -1,6 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
+    enabled = not vim.g.is_vscode,
     build = ":MasonUpdate",
     opts = {
       ui = {
@@ -20,6 +21,7 @@ return {
   },
   {
     "folke/lazydev.nvim",
+    enabled = not vim.g.is_vscode,
     ft = "lua",
     opts = {
       library = {
@@ -27,42 +29,4 @@ return {
       },
     },
   },
-  -- {
-  --   "j-hui/fidget.nvim"
-  -- },
-  {
-    -- {
-    --   "neovim/nvim-lspconfig",
-    --   dependencies = {
-    --     "saghen/blink.cmp",
-    --     "williamboman/mason.nvim",
-    --     "williamboman/mason-lspconfig.nvim",
-    --   },
-    --   config = function()
-    --     vim.diagnostic.config({
-    --       virtual_text = true,
-    --     })
-    --
-    --     local servers = {
-    --       lua_ls = {},
-    --     }
-    --     local handlers = {
-    --       function(server_name)
-    --         local capabilities = vim.lsp.protocol.make_client_capabilities()
-    --         capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
-    --         local server = servers[server_name] or {}
-    --         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-    --         require("lspconfig")[server_name].setup(server)
-    --       end,
-    --     }
-    --
-    --     require("mason").setup()
-    --     require("mason-lspconfig").setup({
-    --       ensure_installed = vim.tbl_keys(servers or {}),
-    --       automatic_installation = false,
-    --       handlers = handlers,
-    --     })
-    --   end,
-    -- },
-  }
 }

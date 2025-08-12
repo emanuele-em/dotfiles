@@ -127,35 +127,36 @@
 		<Setting name="Auto Ascii files">am|asp|bat|c|cfm|cgi|conf|cpp|css|dhtml|diz|h|hpp|htm|html|in|inc|java|js|jsp|lua|m4|mak|md5|nfo|nsi|pas|patch|php|phtml|pl|po|py|qmail|sh|sha1|sha256|sha512|shtml|sql|svg|tcl|tpl|txt|vbs|xhtml|xml|xrc</Setting>
 		<Setting name="Filelist name sort">0</Setting>
 		<Setting name="Prompt password save">0</Setting>
-		<Setting name="Site Manager position">0 327 292 1056 473 </Setting>
 		<Setting name="Already connected choice">3</Setting>
 		<Setting name="Local filelist colwidths">170 80 120 120</Setting>
 		<Setting name="Remote filelist colwidths">150 75 80 100 80 85</Setting>
-		<Setting name="Window position and size">0 255 50 1200 891 </Setting>
-		<Setting name="Splitter positions (v2)">97 -130 500000000 248 248 500000000</Setting>
-		<Setting name="Last automatic update check">2024-12-28 08:57:58</Setting>
 		<Setting name="Greeting version">3.68.1</Setting>
 		<Setting name="Last automatic update version">3.68.1</Setting>
-		<Setting name="Update Check New Version" platform="mac">release 3.67.0
+		<Setting name="Last automatic update check">2025-06-20 07:57:07</Setting>
+		<Setting name="Update Check New Version" platform="mac">nightly 2025-06-18 https://filezilla-project.org/nightlies/2025-06-18/aarch64-apple-darwin23.1.0/FileZilla3.app.tar.bz2 14005673 sha512 2ea5aa7c1bcc49b5354079fca68f085665e4bd7f9599879b6b25c8d8f20dcc2151cab993bef9baf05d5d9666cf642ed504639f1a660128303e2cbfe29955b316 sig:yeqPSSuv6y1TKW/zsxizJWfYjoAfHpKzmd5jYwCbdQ2Bw2Lqic5hJgJnpBNywYEcnGDj1AUWICvQZpLarnIlAg
+release 3.67.0 https://dl2.cdn.filezilla-project.org/FileZilla_3.67.0_macos-arm64.app.tar.bz2 14008641 sha512 c4251cf0e19eea0bd77f49c2be2e3326b95187969ea9d80de4c51375b946aab703b64cdc647bbf6dd02df657a3b0a9c5e5d66cd2b796151e7a79e93678036312 sig:C9+fmMQt7etjdpVbhBU2CV8HigrmtzKo1qZL6vDxvyyC9EdcIhzUaXcvW4M8AB0i7yRgCvfkj2ho5JmdON21Ag
 </Setting>
-		<Setting name="Sitemanager last selected">0/New site</Setting>
+		<Setting name="Sitemanager last selected">0/publistampacuneo</Setting>
+		<Setting name="Site Manager position">0 325 292 1056 473 </Setting>
+		<Setting name="Window position and size">0 253 50 1200 891 </Setting>
+		<Setting name="Splitter positions (v2)">146 -130 500000000 248 248 500000000</Setting>
 		<Setting name="Tab data" sensitive="1">
 			<Tabs>
-				<Tab connected="1" selected="1">
-					<Host>new.albergodelviale.com</Host>
+				<Tab selected="1">
+					<Host>ftp.publistampacuneo.it</Host>
 					<Port>21</Port>
-					<Protocol>6</Protocol>
+					<Protocol>0</Protocol>
 					<Type>0</Type>
-					<User>fc11_albergodelviale</User>
-					<Pass encoding="base64">ZVc0ZDNKZDhKLG9rVXI=</Pass>
+					<User>emanuele@publisampacuneo.it</User>
+					<Pass encoding="base64">LkVtYW51ZWxlOTc=</Pass>
 					<Logontype>1</Logontype>
 					<PasvMode>MODE_DEFAULT</PasvMode>
 					<EncodingType>Auto</EncodingType>
 					<BypassProxy>0</BypassProxy>
-					<Name>New site</Name>
-					<Site>0/New site</Site>
-					<RemotePath>1 0 4 html</RemotePath>
-					<LocalPath>/Users/Emanuele/Dropbox/WEBSITES/albergodelviale.it/bozza2/html/</LocalPath>
+					<Name>publistampacuneo</Name>
+					<Site>0/publistampacuneo</Site>
+					<RemotePath></RemotePath>
+					<LocalPath>/Users/Emanuele/Public/</LocalPath>
 				</Tab>
 			</Tabs>
 		</Setting>

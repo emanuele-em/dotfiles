@@ -1,7 +1,6 @@
 return {
   "stevearc/oil.nvim",
-  ---@module "oil"
-  ---@type oil.SetupOpts
+  enabled = not vim.g.is_vscode,
   opts = {
     view_options = { show_hidden = true },
     confirmation = { border = "single" },

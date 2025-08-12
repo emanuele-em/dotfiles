@@ -1,5 +1,6 @@
 return {
     "L3MON4D3/LuaSnip",
+    enabled = not vim.g.is_vscode,
     version = "v2.*",
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },
