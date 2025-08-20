@@ -1,9 +1,3 @@
--- vim.lsp.config.denols = {
---   cmd = { "deno", "lsp" },
---   root_markers = { "deno.json", "deno.jsonc" },
---   single_file_support = false,
--- }
-
 vim.lsp.config.ts_sl = {
   cmd = { "typescript-language-server", "--stdio" },
   filetypes = {
@@ -44,10 +38,6 @@ vim.lsp.config.rust_analyzer = {
   filetypes = { "rust" }
 }
 
-vim.lsp.config.volar = {
-  filetypes = { "vue" }
-}
-
 vim.lsp.config.lua_ls = {
   cmd = { "lua-language-server" },
   root_markers = {
@@ -80,4 +70,4 @@ vim.lsp.config.lua_ls = {
   }
 }
 
-vim.lsp.enable({ 'denols', 'ts_sl', 'lua_ls', 'json', 'prettierd', 'pyright', 'rust_analyzer', 'volar', 'intelephense' })
+vim.lsp.enable({ 'ts_sl', 'lua_ls', 'json', 'prettierd', 'pyright', 'rust_analyzer', 'intelephense' })

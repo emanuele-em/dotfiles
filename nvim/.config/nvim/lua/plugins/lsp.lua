@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     enabled = not vim.g.is_vscode,
     build = ":MasonUpdate",
     opts = {
@@ -28,5 +28,13 @@ return {
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    vim.diagnostic.config({
+      virtual_lines = true,
+      underline = true,
+      flot = true
+    })
   },
 }

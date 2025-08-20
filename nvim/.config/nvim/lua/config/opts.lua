@@ -31,3 +31,4 @@ vim.opt.shortmess = vim.opt.shortmess + { c = true }
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"
 vim.opt.shell = "/bin/bash"
+vim.opt.hlsearch = true
